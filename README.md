@@ -33,7 +33,40 @@ JWT (jjwt)	用户登录态认证
 Maven	项目构建与依赖管理
 Java 17	运行环境
 ## 📂 项目结构
-
+qna-springboot/
+├── pom.xml
+├── src/main/java/com/example/qna/
+│ ├── QnaApplication.java
+│ ├── config/
+│ │ └── WebConfig.java
+│ ├── controller/
+│ │ ├── AuthController.java
+│ │ ├── CaptchaController.java
+│ │ └── DiscussionController.java
+│ ├── entity/
+│ │ ├── User.java
+│ │ ├── Discussion.java
+│ │ └── Reply.java
+│ ├── interceptor/
+│ │ └── AuthInterceptor.java
+│ ├── mapper/
+│ │ ├── UserMapper.java
+│ │ ├── DiscussionMapper.java
+│ │ └── ReplyMapper.java
+│ ├── service/
+│ │ ├── UserService.java
+│ │ ├── DiscussionService.java
+│ │ └── ReplyService.java
+│ ├── service/impl/
+│ │ ├── UserServiceImpl.java
+│ │ ├── DiscussionServiceImpl.java
+│ │ └── ReplyServiceImpl.java
+│ └── util/
+│ └── JwtUtil.java
+└── src/main/resources/
+├── templates/
+├── static/css/style.css
+└── application.yml
 
 ## 🗄 数据库设计（MySQL）
 
