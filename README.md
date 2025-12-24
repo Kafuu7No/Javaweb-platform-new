@@ -33,6 +33,7 @@ JWT (jjwt)	用户登录态认证
 Maven	项目构建与依赖管理
 Java 17	运行环境
 ## 📂 项目结构
+```
 qna-springboot/
 ├── pom.xml
 ├── src/main/java/com/example/qna/
@@ -67,6 +68,7 @@ qna-springboot/
 ├── templates/
 ├── static/css/style.css
 └── application.yml
+```
 
 ## 🗄 数据库设计（MySQL）
 
@@ -103,3 +105,4 @@ CREATE TABLE IF NOT EXISTS replies (
     REFERENCES discussions(id)
     ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
