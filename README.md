@@ -32,7 +32,6 @@ Thymeleaf	服务端模板引擎
 JWT (jjwt)	用户登录态认证
 Maven	项目构建与依赖管理
 Java 17	运行环境
-📂 项目结构
 qna-springboot/
 ├── pom.xml
 ├── src/main/java/com/example/qna/
