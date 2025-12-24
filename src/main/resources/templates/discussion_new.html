@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>发起新讨论 - 在线问答留言平台</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="header">
+    <div>MVC初步 - 在线问答留言交互平台</div>
+    <div>
+        欢迎，<span th:text="${currentUser == null ? '游客' : currentUser.username}">用户</span>
+        <a th:href="@{/logout}">退出登录</a>
+    </div>
+</div>
+
+<div class="container">
+    <a class="btn btn-secondary" th:href="@{/discussions}">&larr; 返回列表</a>
+
+    <h2 style="margin-top: 16px;">发起新讨论</h2>
+
+    <div th:if="${error}" class="error" th:text="${error}"></div>
+
+    <form th:action="@{/discussion/new}" method="post">
+        <div style="margin-bottom: 10px;">
+            <label>标题</label><br>
+            <input class="input-text" type="text" name="title" required>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label>内容</label><br>
+            <textarea class="textarea" name="content" required></textarea>
+        </div>
+
+        <button class="btn btn-primary" type="submit">发布</button>
+    </form>
+</div>
+</body>
+</html>

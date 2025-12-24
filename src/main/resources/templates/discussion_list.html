@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>讨论列表 - 在线问答留言平台</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="header">
+    <div>MVC初步 - 在线问答留言交互平台</div>
+    <div>
+        欢迎，<span th:text="${currentUser == null ? '游客' : currentUser.username}">用户</span>
+        <a th:href="@{/logout}">退出登录</a>
+    </div>
+</div>
+
+<div class="container">
+    <div style="margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+        <h2 style="margin: 0;">讨论列表</h2>
+        <a class="btn btn-primary" th:href="@{/discussion/new}">发起新讨论</a>
+    </div>
+
+    <p th:if="${#lists.isEmpty(discussions)}">当前还没有讨论，快来发起第一条吧！</p>
+
+    <div th:each="d : ${discussions}" class="discussion-item">
+        <h3 style="margin: 0;">
+            <a th:href="@{/discussion/detail(id=${d.id})}" th:text="${d.title}"></a>
+        </h3>
+        <div class="meta">
+            发布人：<span th:text="${d.author}"></span>
+            &nbsp;|&nbsp;
+            时间：<span th:text="${#temporals.format(d.createTime, 'yyyy-MM-dd HH:mm')}"></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

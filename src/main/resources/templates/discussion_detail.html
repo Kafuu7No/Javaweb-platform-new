@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${discussion.title} + ' - 在线问答留言平台'">讨论详情</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="header">
+    <div>MVC初步 - 在线问答留言交互平台</div>
+    <div>
+        欢迎，<span th:text="${currentUser == null ? '游客' : currentUser.username}">用户</span>
+        <a th:href="@{/logout}">退出登录</a>
+    </div>
+</div>
+
+<div class="container">
+    <a class="btn btn-secondary" th:href="@{/discussions}">&larr; 返回列表</a>
+
+    <h2 style="margin-top: 16px;" th:text="${discussion.title}">讨论标题</h2>
+    <div class="meta">
+        发布人：<span th:text="${discussion.author}"></span>
+        &nbsp;|&nbsp;
+        时间：<span th:text="${#temporals.format(discussion.createTime, 'yyyy-MM-dd HH:mm')}"></span>
+
+    </div>
+
+    <div class="content-text" style="margin-top: 12px; padding: 12px; border: 1px solid #eee; border-radius: 4px;" th:text="${discussion.content}"></div>
+
+    <h3 style="margin-top: 24px;">回复</h3>
+
+    <p th:if="${#lists.isEmpty(replies)}">还没有回复，快来抢沙发～</p>
+
+    <div th:each="r : ${replies}" style="border-bottom: 1px solid #eee; padding: 10px 0;">
+        <div class="content-text" th:text="${r.content}"></div>
+        <div class="meta">
+            回复人：<span th:text="${r.author}"></span>
+            &nbsp;|&nbsp;
+            时间：<span th:text="${#temporals.format(r.createTime, 'yyyy-MM-dd HH:mm')}"></span>
+
+        </div>
+    </div>
+
+    <h3 style="margin-top: 24px;">发表回复</h3>
+    <form method="post" th:action="@{/discussion/detail}">
+        <input type="hidden" name="discussionId" th:value="${discussion.id}">
+        <div style="margin-bottom: 10px;">
+            <textarea class="textarea" name="content" required></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">提交回复</button>
+    </form>
+</div>
+</body>
+</html>
